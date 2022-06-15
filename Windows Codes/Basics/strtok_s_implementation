@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    char s[] = "12/11/2009";
+    char* pstr;
+    char* pstrl;
+
+    for (pstr = strtok_s(s, "/", &pstrl); pstr != NULL; pstr = strtok_s(NULL, "/", &pstrl))
+        puts(pstr);
+
+    return 0;
+}
