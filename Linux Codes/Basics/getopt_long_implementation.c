@@ -3,7 +3,7 @@
 #include <getopt.h>
 
 int main(int argc, char* argv[]){
-    int result, index;
+    int result;
     int a_flag, b_flag, c_flag, help_flag, count_flag, line_flag;
     char* b_arg,  *count_arg, *line_arg;
     int err_flag;
@@ -20,7 +20,7 @@ int main(int argc, char* argv[]){
     a_flag = b_flag = c_flag = help_flag = count_flag = line_flag = 0;
     err_flag = 0;
 
-    while((result = getopt_long(argc, argv, "ab:c", options, &index)) != -1){
+    while((result = getopt_long(argc, argv, "ab:c:", options, NULL)) != -1){
         switch(result){
             case 'a':
                 a_flag = 1;
@@ -44,9 +44,11 @@ int main(int argc, char* argv[]){
                 if (optopt == 'b')
                     fprintf(stderr, "-b option must have an argument!..\n");
                 else if (optopt == 2) //count option must have an argument
-                    fprintf(stderr, "argument must be specified with --count option\n"); //optopt doesn't give wrong long option argument
+                    fprintf(stderr, "argument must be specified with --count option\n"); //optopt does not give wrong long option.
+                else if (optopt != 0)
+                    fprintf(stderr, "Invalid option: -%c\n", optopt);
                 else
-                    fprintf(stderr, "Invalid switch!..\n");
+                    fprintf(stderr, "Invalid long option!..\n");
 
                 err_flag = 1;
                 break;
@@ -79,7 +81,7 @@ int main(int argc, char* argv[]){
     }
 
     if (optind != argc){
-        printf("Arguments without options:\n");
+        printf("Arguments without option:\n");
         for(i = optind; i < argc; ++i)
             printf("%s\n", argv[i]);
     }
