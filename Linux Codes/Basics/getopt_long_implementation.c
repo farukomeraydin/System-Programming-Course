@@ -43,8 +43,8 @@ int main(int argc, char* argv[]){
             case '?':
                 if (optopt == 'b')
                     fprintf(stderr, "-b option must have an argument!..\n");
-                else if (optopt == 2) //count seçeneğinde argüman olmak zorunda
-                    fprintf(stderr, "argument must be specified with --count option\n"); //yanlış uzun seçeneği optopt vermez
+                else if (optopt == 2) //count option must have an argument
+                    fprintf(stderr, "argument must be specified with --count option\n"); //optopt doesn't give wrong long option argument
                 else
                     fprintf(stderr, "Invalid switch!..\n");
 
@@ -79,7 +79,7 @@ int main(int argc, char* argv[]){
     }
 
     if (optind != argc){
-        printf("Seçeneksiz (yani normal) argümanlar:\n");
+        printf("Arguments without options:\n");
         for(i = optind; i < argc; ++i)
             printf("%s\n", argv[i]);
     }
