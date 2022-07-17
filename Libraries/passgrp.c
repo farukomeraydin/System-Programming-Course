@@ -9,7 +9,7 @@
 static int is_all_ws(const char* str);
 
 
-static FILE* g_f; //Dosya açıksa bir daha açılmayacak. Onun için statik yaptık
+static FILE* g_f; //IF file is opened already, it won't be opened.Therefore the object is static.
 
 struct passwd* csd_getpwent(void){
     static struct passwd pass;
