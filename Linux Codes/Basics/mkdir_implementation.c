@@ -1,3 +1,4 @@
+/*usage:<prog> -m <octal digits> <dirname> then check with "ls -ld <dirname>" command*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
