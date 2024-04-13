@@ -1,3 +1,4 @@
+//gcc sample.c filecache.c -o sample
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
